@@ -1,0 +1,9 @@
+# macOS Files
+.DS_Store
+.idea
+wp-admin
+wp-includes
+
+#style.scss
+#style.css
+#style.css.map
