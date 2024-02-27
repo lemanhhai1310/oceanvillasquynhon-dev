@@ -1,15 +1,15 @@
 /**
  * --------------------------------------------------------------------
- * Arial
+ * SFU Futura
  * --------------------------------------------------------------------
  */
-//@font-face{
-//  font-family:'Arial Regular';
-//  font-display: swap;
-//  src:local('Arial Regular'),
-//  url('fonts/Arial/arial.ttf') format('woff'),
-//  url('fonts/Arial/arial.ttf') format('opentype'),
-//  url('fonts/Arial/arial.ttf') format('truetype');
-//  font-weight:normal;
-//  font-style:normal;
-//}
+@font-face{
+  font-family:'SFU Futura Regular';
+  font-display: swap;
+  src:local('SFU Futura Regular'),
+  url('fonts/SFU_Futura/SFUFuturaRegular.TTF') format('woff'),
+  url('fonts/SFU_Futura/SFUFuturaRegular.TTF') format('opentype'),
+  url('fonts/SFU_Futura/SFUFuturaRegular.TTF') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}

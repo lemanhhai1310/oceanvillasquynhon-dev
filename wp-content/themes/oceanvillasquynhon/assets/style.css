@@ -1,16 +1,23 @@
 body {
-  background: #000;
+  background: #fff;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  font-family: "Arial Regular", sans-serif;
+  font-family: "SFU Futura Regular", sans-serif;
 }
 
 /**
  * --------------------------------------------------------------------
- * Arial
+ * SFU Futura
  * --------------------------------------------------------------------
  */
+@font-face {
+  font-family: "SFU Futura Regular";
+  font-display: swap;
+  src: local("SFU Futura Regular"), url("fonts/SFU_Futura/SFUFuturaRegular.TTF") format("woff"), url("fonts/SFU_Futura/SFUFuturaRegular.TTF") format("opentype"), url("fonts/SFU_Futura/SFUFuturaRegular.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 .uk-height-min-small {
   min-height: 150px;
 }
@@ -422,19 +429,93 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   }
 }
 
-.width-810px {
+.width-264px {
   max-width: 100%;
-  width: 810px;
+  width: 264px;
 }
 
-.width-1063px {
+.width-453px {
   max-width: 100%;
-  width: 1063px;
+  width: 453px;
 }
 
-.width-1364px {
-  max-width: 100%;
-  width: 1364px;
+.footer {
+  background: #2F4147;
+}
+.footer__logo img {
+  width: calc(2.875rem + 19.5vw);
+}
+@media (min-width: 1200px) {
+  .footer__logo img {
+    width: 17.5rem;
+  }
+}
+.footer__top {
+  padding-top: calc(1.275rem + 0.3vw);
+  padding-bottom: calc(1.275rem + 0.3vw);
+}
+@media (min-width: 1200px) {
+  .footer__top {
+    padding-top: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footer__top {
+    padding-bottom: 1.5rem;
+  }
+}
+.footer__bottom {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.footer__bottom__txt {
+  font-size: 0.875rem;
+  line-height: 0.82;
+}
+.footer__border:nth-child(n+2) {
+  border-top: 1px solid #6B6764;
+}
+.footer__title {
+  text-transform: uppercase;
+  line-height: 1.44;
+  font-size: 1rem;
+  color: #B2B2AE !important;
+  letter-spacing: 3.2px;
+}
+.footer__address {
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  color: #fff !important;
+  line-height: 1.56;
+}
+.footer__form__label {
+  color: #00ACAB !important;
+  font-size: 1.125rem;
+  letter-spacing: 0.2px;
+  line-height: 1.38;
+}
+.footer__form__input {
+  color: #B2B2AE !important;
+  font-size: 1rem;
+  height: 44px;
+  background-color: transparent !important;
+}
+.footer__form__input:focus {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+.footer__form__btn {
+  line-height: calc(44px - 2px);
+  color: #00ACAB !important;
+  font-size: 0.8125rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-color: #00ACAB !important;
+}
+.footer__nav > li > a {
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: #fff !important;
 }
 
 /*# sourceMappingURL=style.css.map */

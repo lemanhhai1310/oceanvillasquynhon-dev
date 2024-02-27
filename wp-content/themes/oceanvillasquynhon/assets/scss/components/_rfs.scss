@@ -356,3 +356,6 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 @mixin height($value) {
   @include rfs($value, height);
 }
+@mixin width($value) {
+  @include rfs($value, width);
+}
