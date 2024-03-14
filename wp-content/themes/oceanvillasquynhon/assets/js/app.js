@@ -15,6 +15,7 @@ const app = {
     render: function () {
         // Lazy load image
         const imageElements = xx(".lazy");
+        const videoElements = xx(".lazy-video");
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting){
@@ -28,6 +29,9 @@ const app = {
             UIkit.img(image, {
                 loading: 'lazy',
             });
+        });
+        videoElements.forEach((image) => {
+            observer.observe(image);
         });
     },
     start: function () {

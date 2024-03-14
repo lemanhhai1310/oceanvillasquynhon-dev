@@ -13,3 +13,13 @@
   font-weight:normal;
   font-style:normal;
 }
+@font-face{
+  font-family:'SFU Futura Heavy';
+  font-display: swap;
+  src:local('SFU Futura Heavy'),
+  url('fonts/SFU_Futura/SFUFuturaHeavy.TTF') format('woff'),
+  url('fonts/SFU_Futura/SFUFuturaHeavy.TTF') format('opentype'),
+  url('fonts/SFU_Futura/SFUFuturaHeavy.TTF') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}

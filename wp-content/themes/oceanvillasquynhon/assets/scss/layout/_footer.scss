@@ -1,77 +1,58 @@
 .footer{
   background: #2F4147;
-  &__logo{
-    img{
-      @include width(280px);
-    }
-  }
   &__top{
-    @include padding-top(24px);
-    @include padding-bottom(24px);
+    @include padding-top(40px);
+    @include padding-bottom(148px);
   }
   &__center{
-
+    border-top: 1px solid #B2B2AE;
+    @include padding-bottom(24px);
+    @include padding-top(24px);
   }
   &__bottom{
-    @include padding-top(20px);
-    @include padding-bottom(20px);
-    &__txt{
-      @include font-size(14px);
-      line-height: .82;
-    }
-  }
-  &__border{
-    &:nth-child(n+2){
-      border-top: 1px solid #6B6764;
-    }
-  }
-  &__title{
-    text-transform: uppercase;
-    line-height: 1.44;
-    @include font-size(16px);
-    color: #B2B2AE !important;
-    letter-spacing: 3.2px;
+
   }
   &__address{
     letter-spacing: 0.2px;
+    line-height: 1.78;
+    @include font-size(14px);
+    font-family: $font-primary;
+    color: #FFF !important;
+    .phone{
+      padding-left: 24px;
+      background-repeat: no-repeat;
+      background-position: center left;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17' viewBox='0 0 16 17' fill='none'%3E%3Cg clip-path='url(%23clip0_643_145)'%3E%3Cpath d='M3.65398 1.85808C3.59495 1.78214 3.52043 1.71963 3.43538 1.67471C3.35034 1.62978 3.2567 1.60346 3.1607 1.5975C3.0647 1.59154 2.96853 1.60608 2.87858 1.64014C2.78863 1.67421 2.70695 1.72702 2.63898 1.79508L1.60498 2.83008C1.12198 3.31408 0.943983 3.99908 1.15498 4.60008C2.03171 7.08719 3.45614 9.34549 5.32298 11.2081C7.18557 13.0749 9.44387 14.4993 11.931 15.3761C12.532 15.5871 13.217 15.4091 13.701 14.9261L14.735 13.8921C14.803 13.8241 14.8559 13.7424 14.8899 13.6525C14.924 13.5625 14.9385 13.4664 14.9326 13.3704C14.9266 13.2744 14.9003 13.1807 14.8554 13.0957C14.8104 13.0106 14.7479 12.9361 14.672 12.8771L12.365 11.0831C12.2838 11.0203 12.1894 10.9767 12.089 10.9556C11.9885 10.9344 11.8846 10.9363 11.785 10.9611L9.59498 11.5081C9.30264 11.5806 8.99651 11.5765 8.70623 11.4961C8.41594 11.4157 8.15132 11.2617 7.93798 11.0491L5.48198 8.59208C5.26916 8.37884 5.115 8.11427 5.03441 7.82398C4.95382 7.53369 4.94954 7.22751 5.02198 6.93508L5.56998 4.74508C5.59474 4.64546 5.59663 4.54154 5.5755 4.44109C5.55437 4.34064 5.51078 4.24628 5.44798 4.16508L3.65398 1.85808ZM1.88398 1.04108C2.05898 0.86603 2.26921 0.730211 2.50072 0.642641C2.73223 0.555072 2.97973 0.517757 3.22676 0.533173C3.4738 0.548589 3.71474 0.616385 3.93356 0.732057C4.15239 0.847729 4.34411 1.00863 4.49598 1.20408L6.28998 3.51008C6.61898 3.93308 6.73498 4.48408 6.60498 5.00408L6.05798 7.19408C6.0299 7.30752 6.03153 7.42628 6.0627 7.53891C6.09388 7.65154 6.15356 7.75423 6.23598 7.83708L8.69298 10.2941C8.77593 10.3767 8.87879 10.4364 8.99161 10.4676C9.10443 10.4988 9.2234 10.5003 9.33698 10.4721L11.526 9.92508C11.7826 9.86129 12.0504 9.85649 12.3091 9.91105C12.5679 9.96561 12.8109 10.0781 13.02 10.2401L15.326 12.0341C16.155 12.6791 16.231 13.9041 15.489 14.6451L14.455 15.6791C13.715 16.4191 12.609 16.7441 11.578 16.3811C8.93865 15.4537 6.54252 13.9428 4.56798 11.9611C2.58636 9.98683 1.07553 7.59105 0.147983 4.95208C-0.214017 3.92208 0.110983 2.81508 0.850983 2.07508L1.88398 1.04108Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_643_145'%3E%3Crect width='16' height='16' fill='white' transform='translate(0 0.530273)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    }
+    .email{
+      padding-left: 24px;
+      background-repeat: no-repeat;
+      background-position: center left;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17' viewBox='0 0 16 17' fill='none'%3E%3Cpath d='M2.66683 13.8634C2.30016 13.8634 1.98639 13.733 1.7255 13.4721C1.46461 13.2112 1.33394 12.8972 1.3335 12.5301V4.53011C1.3335 4.16344 1.46416 3.84967 1.7255 3.58878C1.98683 3.32789 2.30061 3.19722 2.66683 3.19678H13.3335C13.7002 3.19678 14.0142 3.32744 14.2755 3.58878C14.5368 3.85011 14.6673 4.16389 14.6668 4.53011V12.5301C14.6668 12.8968 14.5364 13.2108 14.2755 13.4721C14.0146 13.7334 13.7006 13.8639 13.3335 13.8634H2.66683ZM8.00016 9.19678L2.66683 5.86344V12.5301H13.3335V5.86344L8.00016 9.19678ZM8.00016 7.86344L13.3335 4.53011H2.66683L8.00016 7.86344ZM2.66683 5.86344V4.53011V12.5301V5.86344Z' fill='white'/%3E%3C/svg%3E");
+    }
+  }
+  &__txtCopyright{
+    @include font-size(12px);
+    font-family: $font-primary;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.50);
+  }
+  &__title{
+    color: #B2B2AE !important;
+    font-family: $font-primary;
     @include font-size(16px);
-    color: #fff !important;
-    line-height: 1.56;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    line-height: 1.45;
   }
-  &__form{
-    $x:44px;
-    &__label{
-      color: #00ACAB !important;
-      @include font-size(18px);
-      letter-spacing: 0.2px;
-      line-height: 1.38;
-    }
-    &__input{
-      color: #B2B2AE !important;
-      @include font-size(16px);
-      height: #{$x};
-      background-color: transparent !important;
-      &:focus{
-        background-color: rgba(255,255,255,.15) !important;
-      }
-    }
-    &__btn{
-      line-height: calc(#{$x} - 2px);
-      color: #00ACAB !important;
-      @include font-size(13px);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-color: #00ACAB !important;
-    }
-  }
-  &__nav{
-    >li{
-      >a{
-        letter-spacing: 0.2px;
-        text-transform: capitalize;
-        @include font-size(16px);
-        color: #fff !important;
-      }
-    }
+  &__icon{
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

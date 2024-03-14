@@ -1,0 +1,66 @@
+.header{
+  &__navbar{
+    &:is(.uk-navbar-transparent){
+      background: rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.20);
+      .uk-navbar-nav{
+        >li{
+          >a{
+            color: rgba(255, 255, 255, 0.65);
+          }
+        }
+      }
+    }
+    &:not(.uk-navbar-transparent){
+      box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+      .uk-navbar-nav{
+        >li{
+          >a{
+            color: #6C6C6C;
+          }
+        }
+      }
+    }
+    &__item{
+      //min-height: 52px;
+    }
+    &__booknow{
+      font-family: $font-SFUFuturaHeavy;
+      font-weight: 900;
+      @include font-size(14px);
+      letter-spacing: 2px;
+      text-decoration-line: underline !important;
+      text-transform: uppercase;
+      color: #00ACAB !important;
+      .uk-navbar-transparent &{
+        color: #fff !important;
+      }
+    }
+    .uk-navbar-item,
+    .uk-navbar-toggle{
+      @extend .header__navbar__item;
+    }
+    .uk-navbar-nav{
+      gap: 12px;
+      >li{
+        >a{
+          @extend .header__navbar__item;
+          //color: rgba(255, 255, 255, 0.65);
+          @include font-size(14px);
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-family: $font-primary;
+        }
+        &.current-menu-parent,
+        &.current-offer-ancestor,
+        &.current-menu-item,
+        &.uk-active,
+        &:hover{
+          >a{
+            color: #00ACAB !important;
+          }
+        }
+      }
+    }
+  }
+}

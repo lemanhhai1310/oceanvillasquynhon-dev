@@ -1,0 +1,42 @@
+.accommodation {
+  &__banner{
+    &__title{
+      @include font-size(36px);
+      line-height: 1.11;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+  &__include{
+    &__section{
+      background: #EFFFFF;
+    }
+    &__title{
+      color: #051419;
+      @include font-size(36px);
+      line-height: 1.11;
+      letter-spacing: 2px;
+      text-transform: capitalize;
+    }
+    &__box{
+      border-radius: 4px;
+      background: rgba(0, 172, 171, 0.10);
+    }
+    &__txt{
+      color: #03121A;
+      @include font-size(18px);
+      line-height: 1.11;
+    }
+  }
+  &__room{
+    &__card{
+      padding-left: 15px;
+      padding-right: 15px;
+      padding: 15px;
+      @include media-breakpoint-up('l'){
+        @include padding(24px);
+        border-radius: 8px;
+      }
+    }
+  }
+}
