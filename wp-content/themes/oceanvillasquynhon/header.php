@@ -136,6 +136,9 @@
                             'theme_location' => 'headerMenuLocation',
                         ));
                         ?>
+
+                        <?= rarus_polylang_languages(); ?>
+
                         <div class="uk-navbar-item uk-visible@l">
                             <a href="" class="header__navbar__booknow uk-link-toggle">
                                 <?php
@@ -151,7 +154,6 @@
                             </a>
                         </div>
 
-                        <?= rarus_polylang_languages(); ?>
 
                     </div>
 

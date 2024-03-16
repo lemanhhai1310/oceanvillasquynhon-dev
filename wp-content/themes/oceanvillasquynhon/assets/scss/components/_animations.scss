@@ -1,0 +1,14 @@
+.anima{
+  opacity: 0 !important;
+  -webkit-transform: translateY(65px);
+  transform: translateY(65px);
+  &.animate{
+    opacity: 1 !important;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: opacity 0.8s ease-in-out,-webkit-transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: opacity 0.8s ease-in-out,-webkit-transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: opacity 0.8s ease-in-out,transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: opacity 0.8s ease-in-out,transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1),-webkit-transform 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+}

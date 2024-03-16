@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="uk-container">
         <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
             <?php if (get_sub_field('title')): ?>
-            <h2 class="home__about__title"><?php the_sub_field('title'); ?></h2>
+            <h2 class="width-388px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
 
             <?php if (get_sub_field('desc')): ?>
