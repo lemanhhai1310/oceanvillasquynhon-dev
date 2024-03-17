@@ -37,7 +37,10 @@
       @include font-size(14px);
       letter-spacing: 3px;
       text-transform: uppercase;
-      border-bottom: 2px solid #00ACAB;
+      border-bottom: 2px solid currentColor;
+      &:hover{
+        color: #0C607E !important;
+      }
     }
   }
   &__experience{

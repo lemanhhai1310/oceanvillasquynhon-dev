@@ -1,3 +1,4 @@
+</main>
 <footer class="footer uk-light">
     <div class="uk-section footer__top">
         <div class="uk-container">

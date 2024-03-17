@@ -1,0 +1,32 @@
+.contact{
+  &__form{
+    &__legend{
+      color: #0C607E;
+      @include font-size(32px);
+      font-family: $font-SFUFuturaHeavy;
+      letter-spacing: 2px;
+      line-height: 1.25;
+    }
+    &__input{
+      color: #B2B2AE;
+      font-feature-settings: 'clig' off, 'liga' off;
+      @include font-size(14px);
+      padding-left: 0 !important;
+      background-color: transparent !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      &:focus{
+        border-color: #0C607E;
+      }
+    }
+    &__btn{
+      background: #00ACAB;
+      @include font-size(13px);
+      letter-spacing: 3px;
+      &:hover{
+        background: #0C607E;
+      }
+    }
+  }
+}

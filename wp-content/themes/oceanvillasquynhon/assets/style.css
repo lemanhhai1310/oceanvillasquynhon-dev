@@ -610,6 +610,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   overflow: hidden;
 }
 
+@keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
 .item-4px:nth-child(n+2) {
   margin-top: 0.25rem;
 }
@@ -839,6 +849,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .uk-navbar-transparent .header__navbar__booknow {
   color: #fff !important;
 }
+.header__navbar__booknow:hover {
+  color: #0C607E !important;
+}
 .header__navbar .uk-navbar-nav {
   gap: 12px;
 }
@@ -999,7 +1012,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 0.875rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border-bottom: 2px solid #00ACAB;
+  border-bottom: 2px solid currentColor;
+}
+.home__about__link:hover {
+  color: #0C607E !important;
 }
 .home__experience__section {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), var(--path-to-image), lightgray 0px -650.023px/100% 303.158% no-repeat;
@@ -1141,6 +1157,43 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   color: #051419;
 }
 
+.contact__form__legend {
+  color: #0C607E;
+  font-size: calc(1.325rem + 0.9vw);
+  font-family: "SFU Futura Heavy", sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.25;
+}
+@media (min-width: 1200px) {
+  .contact__form__legend {
+    font-size: 2rem;
+  }
+}
+.contact__form__input {
+  color: #B2B2AE;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 0.875rem;
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.contact__form__input:focus {
+  border-color: #0C607E;
+}
+.contact__form__btn {
+  background: #00ACAB;
+  font-size: 0.8125rem;
+  letter-spacing: 3px;
+}
+.contact__form__btn:hover {
+  background: #0C607E;
+}
+
+.accommodation__banner {
+  position: relative;
+}
 .accommodation__banner__title {
   font-size: calc(1.35rem + 1.2vw);
   line-height: 1.11;
@@ -1151,6 +1204,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   .accommodation__banner__title {
     font-size: 2.25rem;
   }
+}
+.accommodation__scroll > * {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: scroll;
+  animation-name: scroll;
 }
 .accommodation__include__section {
   background: #EFFFFF;

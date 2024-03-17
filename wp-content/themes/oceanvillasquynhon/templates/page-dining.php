@@ -1,10 +1,7 @@
 <?php
 /* Template name: Dining */
 get_header(); ?>
-<?php $feat_image = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID(), 'full')); ?>
-<div uk-parallax="bgy: -200" class="accommodation__banner uk-light uk-height-viewport uk-flex uk-flex-middle uk-flex-center lazy uk-background-blend-overlay uk-background-norepeat uk-background-fixed uk-background-center-center uk-background-cover" style="background-color: rgba(0, 0, 0, 0.5);" data-src="<?php echo $feat_image ?>">
-    <h1 uk-parallax="target: .accommodation__banner; start: 30vh; end: 30vh; y: 400; easing: 0;" class="accommodation__banner__title"><?php the_title(); ?></h1>
-</div>
+<?php get_template_part('template-parts/content/entry_header'); ?>
 
 <?php if( have_rows('culinary') ): ?>
 <?php while( have_rows('culinary') ): the_row(); ?>
