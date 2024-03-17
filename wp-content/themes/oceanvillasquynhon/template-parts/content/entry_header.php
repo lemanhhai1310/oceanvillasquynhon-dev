@@ -1,5 +1,5 @@
 <?php $feat_image = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID(), 'full')); ?>
-<div uk-parallax="bgy: -200" class="accommodation__banner uk-light uk-height-viewport uk-flex uk-flex-middle uk-flex-center lazy uk-background-blend-overlay uk-background-norepeat uk-background-fixed uk-background-center-center uk-background-cover" style="background-color: rgba(0, 0, 0, 0.5);" data-src="<?php echo $feat_image ?>">
+<div uk-parallax="bgy: -200" class="accommodation__banner uk-light uk-height-viewport uk-flex uk-flex-middle uk-flex-center lazy uk-background-blend-overlay uk-background-norepeat uk-background-fixed uk-background-center-center uk-background-cover" style="background-color: rgba(0, 0, 0, 0.5);" data-src="<?php echo $feat_image ?>" uk-img="loading: eager">
     <h1 uk-parallax="target: .accommodation__banner; start: 30vh; end: 30vh; y: 400; easing: 0;" class="accommodation__banner__title"><?php the_title(); ?></h1>
     <div uk-parallax="target: .accommodation__banner; start: 70vh; end: 70vh; easing: 0;opacity: 1,0;" class="accommodation__scroll uk-position-bottom-center uk-position-medium">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">

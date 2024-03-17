@@ -175,7 +175,18 @@ if ($query->have_posts()): ?>
                         </ul>
                     </div>
                     <div class="item-40px">
-                        <a href="" class="uk-button uk-button-default home__room__btn">Book Now</a>
+                        <a href="" class="uk-button uk-button-default home__room__btn">
+                            <?php
+                            $current_lang = pll_current_language();
+                            switch ($current_lang) {
+                                case "en":
+                                    echo "Book Now";
+                                    break;
+                                default:
+                                    echo "Đặt phòng";
+                            }
+                            ?>
+                        </a>
                     </div>
                 </div>
             </div>

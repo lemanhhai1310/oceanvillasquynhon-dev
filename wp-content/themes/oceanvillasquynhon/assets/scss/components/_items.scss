@@ -1,5 +1,5 @@
 $j:
-4px,12px,16px,28px,32px,36px,40px,42px,44px,48px,50px,60px,64px,74px,
+4px,12px,16px,28px,32px,36px,40px,42px,44px,48px,50px,60px,64px,74px,84px,
 100px,132px;
 @each $i in $j {
   .item-#{$i}{

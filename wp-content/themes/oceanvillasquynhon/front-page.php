@@ -88,13 +88,20 @@ if( $file ): ?>
                 <div class="width-410px">
                     <div class="uk-cover-container">
                         <?php
-                        if(has_post_thumbnail(get_the_ID())){
-                            echo get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' =>'uk-cover', 'uk-cover' =>'') );
-                        }else{
-                            $base_url = get_bloginfo('template_directory');
-                            echo '<img src="'.$base_url.'/assets/images/noimage.jpg" alt="" uk-cover>';
+                        $base_url = get_bloginfo('template_directory');
+                        $featured_img_url = $base_url.'/assets/images/noimage.jpg';
+
+                        if(has_post_thumbnail()){
+                            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        }
+
+                        $thumbnail_id = get_post_meta( get_the_ID(), '_thumbnail_id', true );
+                        $img_alt = get_post_meta ( $thumbnail_id, '_wp_attachment_image_alt', true );
+                        if(! $img_alt){
+                            $img_alt = get_the_title();
                         }
                         ?>
+                        <img class="lazy" data-src="<?= $featured_img_url ?>" alt="<?= $img_alt ?>" uk-cover="">
                         <canvas width="410" height="525"></canvas>
                     </div>
                     <div class="item-28px">
@@ -142,51 +149,58 @@ if( $file ): ?>
         <h2 class="home__about__title uk-text-center"><?php the_sub_field('title'); ?></h2>
         <?php endif; ?>
 
-
+        <?php
+        $query = new WP_Query(array(
+            'post_type' => 'offer',
+        ));
+        if ($query->have_posts()): ?>
         <div class="item-60px" uk-slider>
 
             <div class="uk-position-relative">
 
                 <div class="uk-slider-container">
                     <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small uk-grid-30-l" uk-grid>
-                        <?php
-                        $data = array(
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img1.png'),
-                            ),
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img2.png'),
-                            ),
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img3.png'),
-                            ),
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img1.png'),
-                            ),
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img2.png'),
-                            ),
-                            array(
-                                'img' => get_theme_file_uri('/assets/images/offer/img3.png'),
-                            ),
-                        );
-                        foreach ($data as $k=>$v): ?>
+                        <?php while ($query->have_posts()){ $query->the_post(); ?>
                         <li>
-                            <div class="uk-cover-container">
-                                <img class="lazy" data-src="<?= $v['img'] ?>" alt="" uk-cover="">
+                            <div class="uk-cover-container uk-border-rounded">
+                                <?php
+                                $base_url = get_bloginfo('template_directory');
+                                $featured_img_url = $base_url.'/assets/images/noimage.jpg';
+
+                                if(has_post_thumbnail()){
+                                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                                }
+
+                                $thumbnail_id = get_post_meta( get_the_ID(), '_thumbnail_id', true );
+                                $img_alt = get_post_meta ( $thumbnail_id, '_wp_attachment_image_alt', true );
+                                if(! $img_alt){
+                                    $img_alt = get_the_title();
+                                }
+                                ?>
+                                <img class="lazy" data-src="<?= $featured_img_url ?>" alt="<?= $img_alt ?>" uk-cover="">
                                 <canvas width="384" height="240"></canvas>
                             </div>
                             <div class="item-16px" style="padding-bottom: 1px;">
-                                <h4 class="home__room__title1"><a href="" class="uk-link-toggle">VILLA Forest Wellness Pool Villa</a></h4>
-                                <div class="item-12px home__room__txt">Experience the vibrant sights and sounds of the lush Mayan jungle.</div>
+                                <h4 class="home__room__title1"><a href="" class="uk-link-toggle"><?php the_title(); ?></a></h4>
+                                <div class="item-12px home__room__txt"><?php the_excerpt_limited( 100 ); ?></div>
                                 <?php if (get_sub_field('button_text')): ?>
                                 <div class="item-32px">
-                                    <a href="" class="uk-button uk-button-default home__room__btn"><?php the_sub_field('button_text'); ?></a>
+                                    <a
+                                        href="<?php
+                                        $button_link = get_sub_field('button_link');
+                                        if ($button_link){
+                                            $permalink = get_permalink( $button_link->ID );
+                                            echo $permalink;
+                                        }
+                                        ?>"
+                                        class="uk-button uk-button-default home__room__btn">
+                                        <?php the_sub_field('button_text'); ?>
+                                    </a>
                                 </div>
                                 <?php endif; ?>
                             </div>
                         </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
                 </div>
 
@@ -205,6 +219,7 @@ if( $file ): ?>
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
         </div>
+        <?php endif; wp_reset_postdata(); ?>
 
         <?php endwhile; ?>
         <?php endif; ?>

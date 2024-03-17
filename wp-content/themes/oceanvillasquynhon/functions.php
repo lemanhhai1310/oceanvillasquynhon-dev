@@ -62,3 +62,24 @@ function modified_column_register_sortable( $columns ) {
 add_filter( 'manage_edit-post_sortable_columns', 'modified_column_register_sortable' );
 add_filter( 'manage_edit-page_sortable_columns', 'modified_column_register_sortable' );
 add_filter( 'manage_upload_sortable_columns', 'modified_column_register_sortable' );
+
+function the_excerpt_limited( $charlength ){
+    $excerpt = get_the_excerpt();
+
+    $charlength++;
+
+    if ( mb_strlen( $excerpt ) > $charlength ) {
+        $subex = mb_substr( $excerpt, 0, $charlength - 5 );
+        $exwords = explode( ' ', $subex );
+        $excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+        if ( $excut < 0 ) {
+            echo mb_substr( $subex, 0, $excut );
+        } else {
+            echo $subex;
+        }
+        echo '[...]';
+    }
+    else {
+        echo $excerpt;
+    }
+}

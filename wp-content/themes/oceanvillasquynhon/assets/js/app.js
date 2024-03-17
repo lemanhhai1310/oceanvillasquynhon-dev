@@ -43,3 +43,27 @@ window.addEventListener("load", ()=>{
     console.log("page is fully loaded");
     app.start();
 })
+
+UIkit.mixin({
+    i18n: {slideLabel: '%s/%s'}
+}, 'slideshow');
+
+function indexInParent(node) {
+    var children = node.parentNode.childNodes;
+    var num = 0;
+
+    for (var i=0; i<children.length; i++) {
+        if (children[i]==node) return num;
+        if (children[i].nodeType==1) num++;
+    }
+
+    return -1;
+}
+
+UIkit.util.on('#slideshow', 'itemshown', function() {
+    var $items = this.getElementsByClassName('uk-slideshow-items');
+    var $activeItem = $items[0].getElementsByClassName('uk-active');
+    var index = indexInParent($activeItem[0]);
+
+    console.log(index);
+});

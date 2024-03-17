@@ -503,6 +503,64 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 @media (min-width: 1600px) {
+  .uk-grid-44-xl {
+    margin-left: -44px !important;
+  }
+  .uk-grid-44-xl > * {
+    padding-left: 44px !important;
+  }
+  .uk-grid-44-xl > .uk-grid-margin {
+    margin-top: 44px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .uk-grid-44-l {
+    margin-left: -44px !important;
+  }
+  .uk-grid-44-l > * {
+    padding-left: 44px !important;
+  }
+  .uk-grid-44-l > .uk-grid-margin {
+    margin-top: 44px !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .uk-grid-44-m {
+    margin-left: -44px !important;
+  }
+  .uk-grid-44-m > * {
+    padding-left: 44px !important;
+  }
+  .uk-grid-44-m > .uk-grid-margin {
+    margin-top: 44px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .uk-grid-44-s {
+    margin-left: -44px !important;
+  }
+  .uk-grid-44-s > * {
+    padding-left: 44px !important;
+  }
+  .uk-grid-44-s > .uk-grid-margin {
+    margin-top: 44px !important;
+  }
+}
+
+.uk-grid-44 {
+  margin-left: -44px;
+}
+.uk-grid-44 > * {
+  padding-left: 44px;
+}
+.uk-grid-44 > .uk-grid-margin {
+  margin-top: 44px;
+}
+
+@media (min-width: 1600px) {
   .uk-grid-50-xl {
     margin-left: -50px !important;
   }
@@ -558,6 +616,64 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 .uk-grid-50 > .uk-grid-margin {
   margin-top: 50px;
+}
+
+@media (min-width: 1600px) {
+  .uk-grid-84-xl {
+    margin-left: -84px !important;
+  }
+  .uk-grid-84-xl > * {
+    padding-left: 84px !important;
+  }
+  .uk-grid-84-xl > .uk-grid-margin {
+    margin-top: 84px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .uk-grid-84-l {
+    margin-left: -84px !important;
+  }
+  .uk-grid-84-l > * {
+    padding-left: 84px !important;
+  }
+  .uk-grid-84-l > .uk-grid-margin {
+    margin-top: 84px !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .uk-grid-84-m {
+    margin-left: -84px !important;
+  }
+  .uk-grid-84-m > * {
+    padding-left: 84px !important;
+  }
+  .uk-grid-84-m > .uk-grid-margin {
+    margin-top: 84px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .uk-grid-84-s {
+    margin-left: -84px !important;
+  }
+  .uk-grid-84-s > * {
+    padding-left: 84px !important;
+  }
+  .uk-grid-84-s > .uk-grid-margin {
+    margin-top: 84px !important;
+  }
+}
+
+.uk-grid-84 {
+  margin-left: -84px;
+}
+.uk-grid-84 > * {
+  padding-left: 84px;
+}
+.uk-grid-84 > .uk-grid-margin {
+  margin-top: 84px;
 }
 
 .anima {
@@ -728,6 +844,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 @media (min-width: 1200px) {
   .item-74px:nth-child(n+2) {
     margin-top: 4.625rem;
+  }
+}
+
+.item-84px:nth-child(n+2) {
+  margin-top: calc(1.65rem + 4.8vw);
+}
+@media (min-width: 1200px) {
+  .item-84px:nth-child(n+2) {
+    margin-top: 5.25rem;
   }
 }
 
@@ -1386,6 +1511,77 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     right: 0;
     top: 94px;
   }
+}
+
+.offer__contentBox {
+  background: #F7F5F2;
+  font-size: 0.875rem;
+  color: #000;
+  line-height: 1.71;
+}
+@media (min-width: 1200px) {
+  .offer__contentBox {
+    padding: 32px 24px;
+  }
+}
+.offer__btnView {
+  color: #FFF !important;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  border: none;
+  padding: 0;
+  line-height: inherit;
+  text-transform: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.offer__btnView svg {
+  transition: all 0.2s;
+}
+.offer__btnView.open svg {
+  transform: rotate(180deg);
+}
+.offer__overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 7.92%, #000 179.55%);
+  min-height: 132px;
+}
+.offer__navFilter {
+  border-radius: 4px;
+  background: #F7F5F2;
+  display: inline-flex;
+  padding: 16px 24px;
+}
+.offer__navFilter .uk-subnav {
+  margin-left: 0;
+  gap: calc(1.325rem + 0.9vw);
+}
+@media (min-width: 1200px) {
+  .offer__navFilter .uk-subnav {
+    gap: 2rem;
+  }
+}
+.offer__navFilter .uk-subnav > * {
+  padding-left: 0;
+}
+.offer__navFilter .uk-subnav > * > * {
+  text-transform: inherit;
+  letter-spacing: 2px;
+  color: rgba(12, 96, 126, 0.5) !important;
+  background-color: transparent !important;
+  font-size: 1.0625rem;
+}
+.offer__navFilter .uk-subnav > * > *:first-child {
+  padding: 0 !important;
+}
+.offer__navFilter .uk-subnav > * > *:hover {
+  background-color: transparent !important;
+  color: #0C607E !important;
+}
+.offer__navFilter .uk-subnav > *.uk-active > a {
+  background-color: transparent !important;
+  color: #0C607E !important;
+  text-decoration-line: underline !important;
 }
 
 /*# sourceMappingURL=style.css.map */
