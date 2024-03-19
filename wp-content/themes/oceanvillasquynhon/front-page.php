@@ -53,7 +53,10 @@ if( $file ): ?>
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                    <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                    <div class="uk-cover-container">
+                        <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
+                        <canvas width="620" height="764"></canvas>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -256,7 +259,10 @@ if( $file ): ?>
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                    <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                    <div class="uk-cover-container">
+                        <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
+                        <canvas width="620" height="764"></canvas>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>

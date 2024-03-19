@@ -97,6 +97,19 @@ $query = new WP_Query(array(
 if ($query->have_posts()): ?>
 <div class="uk-section uk-section-muted">
     <div class="uk-container uk-padding-remove">
+        <script>
+            function indexInParent(node) {
+                var children = node.parentNode.childNodes;
+                var num = 0;
+
+                for (var i=0; i<children.length; i++) {
+                    if (children[i]==node) return num;
+                    if (children[i].nodeType==1) num++;
+                }
+
+                return -1;
+            }
+        </script>
         <?php
         $num = 1;
         while ($query->have_posts()){ $query->the_post(); ?>
@@ -106,7 +119,7 @@ if ($query->have_posts()): ?>
                 $images = get_field('gallery');
                 if( $images ): ?>
                 <div class="uk-width-auto@l <?= ($num%2==0) ? 'uk-flex-last@l' : '' ?>">
-                    <div class="accommodation__room__card__slider uk-border-rounded uk-overflow-hidden width-540px uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 540:442;autoplay: true;finite: true;">
+                    <div id="slideshow-<?= $num ?>" class="accommodation__room__card__slider uk-border-rounded uk-overflow-hidden width-540px uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 540:442;autoplay: true;finite: true;">
 
                         <ul class="uk-slideshow-items">
                             <?php foreach( $images as $image ): ?>
@@ -116,7 +129,9 @@ if ($query->have_posts()): ?>
                             <?php endforeach; ?>
                         </ul>
 
-                        <div class="accommodation__room__card__slider__label uk-position-bottom-left">1/4</div>
+                        <div class="accommodation__room__card__slider__label uk-position-bottom-left">
+                            1/4
+                        </div>
 
                         <div class="uk-position-bottom-right uk-flex">
                             <a class="accommodation__room__card__slider__slidenav accommodation__room__card__slider__slidenav--prev" href uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -124,6 +139,23 @@ if ($query->have_posts()): ?>
                         </div>
 
                     </div>
+                    <script>
+                        UIkit.util.on('#slideshow-<?= $num ?>', 'itemshown', function() {
+                            var $items = this.getElementsByClassName('uk-slideshow-items');
+                            var $activeItem = $items[0].getElementsByClassName('uk-active');
+                            console.log('$activeItem',$activeItem);
+
+                            var index = indexInParent($activeItem[0]);
+
+                            console.log('#slideshow-<?= $num ?>',index+1);
+                            var $length = $items[0].getElementsByTagName('li').length;
+                            console.log('$length',$length);
+
+                            var $label = this.getElementsByClassName('accommodation__room__card__slider__label');
+                            console.log('$label',$label);
+                            this.getElementsByClassName('accommodation__room__card__slider__label').outerText = "New text!";
+                        });
+                    </script>
                 </div>
                 <?php endif; ?>
                 <div class="uk-width-expand">

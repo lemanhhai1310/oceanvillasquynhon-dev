@@ -5,8 +5,10 @@ get_header(); ?>
 <div class="uk-section">
     <div class="uk-container">
         <?php
+        $cat_name = 'cat_offer';
+        $post_type = 'offer';
         $args = array(
-            'taxonomy' => 'category-offer',
+            'taxonomy' => $cat_name,
         );
         $cats = get_categories($args);
         //var_dump($cats);
@@ -43,10 +45,10 @@ get_header(); ?>
 
             <?php
             $query = new WP_Query(array(
-                'post_type' => 'offer',
+                'post_type' => $post_type,
                 'tax_query' => array(
                     array (
-                        'taxonomy' => 'category-offer',
+                        'taxonomy' => $cat_name,
                         'field' => 'slug',
                         'terms' => $cat_slug,
                     )
@@ -58,7 +60,7 @@ get_header(); ?>
 
                 <?php
                 $id = get_the_ID();
-                $terms = wp_get_post_terms($id, 'category-offer');
+                $terms = wp_get_post_terms($id, $cat_name);
                 ?>
                 <li data-slug="<?php echo $terms[0]->slug; ?>" class="uk-inline-clip uk-transition-toggle">
                     <div class="uk-grid-44-l" uk-grid uk-height-match=".my-height">

@@ -740,6 +740,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   margin-top: 0.25rem;
 }
 
+.item-8px:nth-child(n+2) {
+  margin-top: 0.5rem;
+}
+
 .item-12px:nth-child(n+2) {
   margin-top: 0.75rem;
 }
@@ -1582,6 +1586,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   background-color: transparent !important;
   color: #0C607E !important;
   text-decoration-line: underline !important;
+}
+
+.celebrations__content {
+  color: #B2B2AE;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+.celebrations__content > * {
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
