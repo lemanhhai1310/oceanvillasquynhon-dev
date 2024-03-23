@@ -1,4 +1,34 @@
 .header{
+  &__menuBtn{
+    .uk-navbar-transparent &{
+      color: rgba(255, 255, 255, 0.70);
+    }
+  }
+  &__lang{
+    >li{
+      >a{
+        @include font-size(14px);
+        color: #6C6C6C;
+        .uk-navbar-transparent &{
+          color: rgba(255, 255, 255, 0.70);
+        }
+      }
+    }
+    .uk-dropdown{
+      min-width: 60px;
+      padding: 10px;
+    }
+    .uk-dropdown-nav{
+      >li{
+        >a{
+          text-transform: uppercase;
+          @include font-size(14px);
+          //justify-content: center;
+          gap: 5px;
+        }
+      }
+    }
+  }
   &__navbar{
     &:is(.uk-navbar-transparent){
       background: rgba(0, 0, 0, 0.25);
@@ -25,8 +55,9 @@
       //min-height: 52px;
     }
     &__booknow{
-      font-family: $font-SFUFuturaHeavy;
-      font-weight: 900;
+      font-family: $font-CenturyGothicPro-Bold;
+      //font-family: $font-SFUFuturaHeavy;
+      //font-weight: 900;
       @include font-size(14px);
       letter-spacing: 2px;
       text-decoration-line: underline !important;

@@ -7,7 +7,7 @@ get_header(); ?>
 <?php while( have_rows('culinary') ): the_row(); ?>
 <div class="uk-section uk-section-muted">
     <div class="uk-container">
-        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+        <div uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100" class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
             <?php if (get_sub_field('title')): ?>
             <h2 class="width-388px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
@@ -32,14 +32,22 @@ while( have_rows('restaurant') ): the_row(); ?>
                 <?php
                 $image = get_sub_field('image');
                 if( !empty($image) ): ?>
-                <div class="uk-cover-container uk-border-rounded">
+                <div
+                <?php
+                if ($num%2==0){
+                    echo 'uk-scrollspy="cls: uk-animation-slide-left-small; repeat: false; delay: 100"';
+                }else{
+                    echo 'uk-scrollspy="cls: uk-animation-slide-right-small; repeat: false; delay: 100"';
+                }
+                ?>
+                class="uk-cover-container uk-border-rounded">
                     <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
                     <canvas width="600" height="440"></canvas>
                 </div>
                 <?php endif; ?>
             </div>
             <div>
-                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-left">
+                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-left" uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100">
                     <?php if (get_sub_field('title')): ?>
                     <h2 class="home__about__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>
@@ -49,6 +57,18 @@ while( have_rows('restaurant') ): the_row(); ?>
                         <?php if (get_sub_field('content')): ?>
                         <div class="dining__content">
                             <?php the_sub_field('content'); ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if (get_sub_field('capacity') || get_sub_field('open')): ?>
+                        <div class="dining__capacity uk-flex uk-flex-column" style="gap: 12px">
+                            <?php if (get_sub_field('capacity')): ?>
+                            <div><?php the_sub_field('capacity'); ?></div>
+                            <?php endif; ?>
+
+                            <?php if (get_sub_field('open')): ?>
+                            <div><?php the_sub_field('open'); ?></div>
+                            <?php endif; ?>
                         </div>
                         <?php endif; ?>
 
@@ -70,7 +90,7 @@ while( have_rows('restaurant') ): the_row(); ?>
     <div class="uk-container">
         <div class="uk-flex-middle" uk-grid>
             <div class="uk-width-expand">
-                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center" uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100">
                     <?php if (get_sub_field('title')): ?>
                         <h2 class="width-298px home__about__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>
@@ -84,12 +104,12 @@ while( have_rows('restaurant') ): the_row(); ?>
                 <?php
                 $images = get_sub_field('gallery');
                 if( $images ): ?>
-                <div class="dining__boxImage uk-position-relative width-715px">
+                <div class="dining__boxImage uk-position-relative width-715px" uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
                     <?php
                     $num = 1;
                     foreach( $images as $image ): ?>
                     <div class="item-16px dining__boxImage__item">
-                        <div class="uk-cover-container">
+                        <div class="uk-cover-container anima">
                             <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
                             <?php
                             switch ($num) {
@@ -119,12 +139,12 @@ while( have_rows('restaurant') ): the_row(); ?>
 <?php
 $images = get_field('gallery');
 if( $images ): ?>
-<div class="uk-section uk-section-muted" uk-lightbox="animation: slide">
-    <div uk-slider="center: true">
+<div class="uk-section uk-section-muted" uk-scrollspy="cls: uk-animation-slide-right-medium; repeat: false; delay: 100">
+    <div uk-slider="center: false">
 
         <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
-            <ul class="uk-slider-items uk-grid-8" uk-grid>
+            <ul class="uk-slider-items uk-grid-8 uk-flex-center" uk-grid uk-lightbox="animation: slide">
                 <?php foreach( $images as $image ): ?>
                 <li class="uk-width-3-4 uk-width-auto@l">
                     <div class="uk-cover-container uk-inline-clip uk-transition-toggle">

@@ -7,7 +7,7 @@ get_header(); ?>
 <?php while( have_rows('our_rooms') ): the_row(); ?>
 <div class="uk-section">
     <div class="uk-container">
-        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+        <div uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100" class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
             <?php if (get_sub_field('title')): ?>
             <h2 class="width-388px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
@@ -21,7 +21,7 @@ get_header(); ?>
     <?php
     $images = get_sub_field('gallery');
     if( $images ): ?>
-    <div class="item-74px uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="center: true">
+    <div class="item-74px uk-position-relative uk-visible-toggle" uk-scrollspy="cls: uk-animation-slide-right-medium; repeat: false; delay: 100" tabindex="-1" uk-slider="center: true">
 
         <ul class="uk-slider-items uk-grid" uk-grid>
             <?php foreach( $images as $image ): ?>
@@ -54,8 +54,8 @@ get_header(); ?>
         <?php endif; ?>
 
         <?php if( have_rows('included_repeater') ): ?>
-        <div class="item-60px width-960px uk-margin-auto">
-            <div class="uk-child-width-1-2 uk-child-width-1-3@l uk-child-width-1-4@l uk-grid-small uk-grid-30-l" uk-grid>
+        <div class="item-60px uk-margin-auto">
+            <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-5@l uk-grid-small uk-grid-30-l" uk-grid>
                 <?php while( have_rows('included_repeater') ): the_row();  ?>
                 <div>
                     <div class="uk-flex-middle uk-grid-12" uk-grid>
@@ -96,7 +96,7 @@ $query = new WP_Query(array(
 ));
 if ($query->have_posts()): ?>
 <div class="uk-section uk-section-muted">
-    <div class="uk-container uk-padding-remove">
+    <div class="uk-container uk-padding-remove" uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
         <script>
             function indexInParent(node) {
                 var children = node.parentNode.childNodes;
@@ -113,7 +113,7 @@ if ($query->have_posts()): ?>
         <?php
         $num = 1;
         while ($query->have_posts()){ $query->the_post(); ?>
-        <div class="accommodation__room__card uk-card item-44px uk-card-body uk-border-rounded uk-background-default">
+        <div class="accommodation__room__card anima uk-card item-44px uk-card-body uk-border-rounded uk-background-default">
             <div uk-grid>
                 <?php
                 $images = get_field('gallery');
@@ -184,18 +184,44 @@ if ($query->have_posts()): ?>
                     <div class="item-36px">
                         <ul class="accommodation__room__card__tab uk-subnav uk-subnav-pill uk-grid-12" uk-switcher>
                             <?php if (get_field('description')): ?>
-                            <li><a href="#">Description</a></li>
+                            <li>
+                                <a href="#">
+                                    <?php
+                                    $current_lang = pll_current_language();
+                                    switch ($current_lang) {
+                                        case "en":
+                                            echo "Description";
+                                            break;
+                                        default:
+                                            echo "Mô tả";
+                                    }
+                                    ?>
+                                </a>
+                            </li>
                             <?php endif; ?>
 
                             <?php if (get_field('facilities')): ?>
-                            <li><a href="#">Facilities</a></li>
+                            <li>
+                                <a href="#">
+                                    <?php
+                                    $current_lang = pll_current_language();
+                                    switch ($current_lang) {
+                                        case "en":
+                                            echo "Facilities";
+                                            break;
+                                        default:
+                                            echo "Tiện nghi";
+                                    }
+                                    ?>
+                                </a>
+                            </li>
                             <?php endif; ?>
                         </ul>
 
                         <ul class="uk-switcher uk-margin">
                             <?php if (get_field('description')): ?>
                             <li class="accommodation__room__card__desc">
-                                <?php the_field('description'); ?>
+                                <p class="add-read-more show-less-content"><?php echo strip_tags(get_field('description')); ?></p>
                             </li>
                             <?php endif; ?>
 
@@ -227,4 +253,38 @@ if ($query->have_posts()): ?>
     </div>
 </div>
 <?php endif; wp_reset_postdata(); ?>
+<script>
+    jQuery(function ($) {
+        function AddReadMore() {
+            //This limit you can set after how much characters you want to show Read More.
+            var carLmt = 300;
+            // Text to show when text is collapsed
+            var readMoreTxt = " ...<?= (pll_current_language() == "vi") ? 'Xem thêm' : 'Read more' ?>";
+            // Text to show when text is expanded
+            var readLessTxt = " <?= (pll_current_language() == "vi") ? 'Thu gọn' : 'Read less' ?>";
+
+
+            //Traverse all selectors with this class and manipulate HTML part to show Read More
+            $(".add-read-more").each(function () {
+                if ($(this).find(".first-section").length)
+                    return;
+
+                var allstr = $(this).text();
+                if (allstr.length > carLmt) {
+                    var firstSet = allstr.substring(0, carLmt);
+                    var secdHalf = allstr.substring(carLmt, allstr.length);
+                    var strtoadd = firstSet + "<span class='second-section'>" + secdHalf + "</span><span class='read-more'  title='Click to Show More'>" + readMoreTxt + "</span><span class='read-less' title='Click to Show Less'>" + readLessTxt + "</span>";
+                    $(this).html(strtoadd);
+                }
+            });
+
+            //Read More and Read Less Click Event binding
+            $(document).on("click", ".read-more,.read-less", function () {
+                $(this).closest(".add-read-more").toggleClass("show-less-content show-more-content");
+            });
+        }
+
+        AddReadMore();
+    });
+</script>
 <?php get_footer(); ?>

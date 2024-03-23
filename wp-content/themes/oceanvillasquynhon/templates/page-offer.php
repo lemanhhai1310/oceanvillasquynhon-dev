@@ -18,7 +18,7 @@ get_header(); ?>
         <div uk-filter="target: .js-filter">
 
             <div class="uk-flex uk-flex-center">
-                <div class="offer__navFilter">
+                <div class="offer__navFilter" uk-sticky="offset: 90">
                     <ul class="uk-subnav uk-subnav-pill uk-flex-center uk-margin-remove-bottom">
                         <li class="uk-active" uk-filter-control>
                             <a href="#">
@@ -46,6 +46,7 @@ get_header(); ?>
             <?php
             $query = new WP_Query(array(
                 'post_type' => $post_type,
+                'posts_per_page' => -1,
                 'tax_query' => array(
                     array (
                         'taxonomy' => $cat_name,
@@ -55,14 +56,14 @@ get_header(); ?>
                 ),
             ));
             if ($query->have_posts()): ?>
-            <ul class="js-filter uk-child-width-1-1 uk-grid-84-l item-64px" uk-grid>
+            <ul class="js-filter uk-child-width-1-1 uk-grid-84-l item-64px" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
                 <?php while ($query->have_posts()){ $query->the_post(); ?>
 
                 <?php
                 $id = get_the_ID();
                 $terms = wp_get_post_terms($id, $cat_name);
                 ?>
-                <li data-slug="<?php echo $terms[0]->slug; ?>" class="uk-inline-clip uk-transition-toggle">
+                <li data-slug="<?php echo $terms[0]->slug; ?>" class="uk-inline-clip uk-transition-toggle anima">
                     <div class="uk-grid-44-l" uk-grid uk-height-match=".my-height">
                         <div class="uk-width-auto@l">
                             <div class="width-540px uk-border-rounded uk-overflow-hidden">

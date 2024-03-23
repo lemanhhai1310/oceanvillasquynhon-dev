@@ -7,9 +7,9 @@ get_header(); ?>
 <?php while( have_rows('celebrate_with_us') ): the_row(); ?>
 <div class="uk-section uk-section-muted">
     <div class="uk-container">
-        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+        <div uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100" class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
             <?php if (get_sub_field('title')): ?>
-                <h2 class="width-388px home__about__title"><?php the_sub_field('title'); ?></h2>
+                <h2 class="width-500px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
 
             <?php if (get_sub_field('desc')): ?>
@@ -48,11 +48,12 @@ get_header(); ?>
         <?php
         $query = new WP_Query(array(
             'post_type' => 'the-venue',
+            'posts_per_page' => -1,
         ));
         if ($query->have_posts()): ?>
-        <div class="item-64px uk-child-width-1-3@l" uk-grid>
+        <div class="item-64px uk-child-width-1-3@l" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
             <?php while ($query->have_posts()){ $query->the_post(); ?>
-            <div>
+            <div class="anima">
                 <div class="uk-cover-container">
                     <?php
                     $base_url = get_bloginfo('template_directory');
@@ -107,19 +108,19 @@ $num = 1;
 while( have_rows('celebrations') ): the_row(); ?>
 <div class="uk-section <?= ($num%2==0) ? '' : 'uk-section-muted' ?>">
     <div class="uk-container">
-        <div class="uk-child-width-1-2@l uk-flex-middle item-132px" uk-grid>
+        <div class="uk-child-width-1-2@l uk-flex-middle item-132px" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
             <div class="<?= ($num%2==0) ? '' : 'uk-flex-last@l' ?>">
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                <div class="uk-cover-container">
+                <div class="uk-cover-container anima">
                     <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
                     <canvas width="620" height="764"></canvas>
                 </div>
                 <?php endif; ?>
             </div>
             <div>
-                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+                <div class="home__about__boxFlex anima uk-flex uk-flex-column uk-flex-middle uk-text-center">
                     <?php if (get_sub_field('title')): ?>
                         <h2 class="width-298px home__about__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>

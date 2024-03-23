@@ -2,7 +2,7 @@
 <footer class="footer uk-light">
     <div class="uk-section footer__top">
         <div class="uk-container">
-            <div class="uk-child-width-auto@l uk-flex-between@l" uk-grid>
+            <div class="uk-child-width-auto@l uk-flex-between@l uk-flex-middle" uk-grid>
                 <div>
                     <figure class="uk-text-center">
                         <a href="">
@@ -58,54 +58,75 @@
                         <h3 class="footer__title">GET IN TOUCH</h3>
                         <address class="item-28px footer__address">
                             <div>Nhon Ly - Cat Tien beach tourist area, Cat Tien commune, Phu Cat district, Binh Dinh, Vietnam</div>
-                            <div class="item-16px phone">(+84) 256 390 0808</div>
-                            <div class="item-16px email">reservations.mrqn@fusionhotelgroup.com</div>
+                            <div class="item-16px phone"><?php the_field('phone', 'option'); ?></div>
+                            <div class="item-16px email"><?php the_field('email', 'option'); ?></div>
                         </address>
                     </div>
                 </div>
                 <div>
                     <div class="width-360px">
+                        <?php if( have_rows('social_list', 'option') ): ?>
                         <h3 class="footer__title">Media</h3>
                         <div class="uk-grid-12 item-28px" uk-grid>
-                            <div>
-                                <a href="" class="footer__icon">
+                            <?php while( have_rows('social_list', 'option') ) : the_row(); ?>
+                                <?php
+                                $current_option = get_sub_field('social_option');
+                                $current_url = get_sub_field('url');
+                                //echo $current_option;
+                                switch ($current_option) {
+                                    case "Facebook":
+                                        echo '<div>
+                                <a target="_blank" href='.$current_url.' class="footer__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
                                         <rect y="0.530273" width="28" height="28" rx="4" fill="white" fill-opacity="0.2"/>
                                         <path d="M15.1384 21.5303V15.1442H17.3898L17.7269 12.6554H15.1383V11.0665C15.1383 10.3459 15.3485 9.85488 16.4338 9.85488L17.818 9.85427V7.62833C17.5786 7.59805 16.7569 7.53027 15.801 7.53027C13.8052 7.53027 12.4388 8.69008 12.4388 10.8201V12.6554H10.1816V15.1442H12.4388V21.5302H15.1384V21.5303Z" fill="white"/>
                                     </svg>
                                 </a>
-                            </div>
-                            <div>
-                                <a href="" class="footer__icon">
+                            </div>';
+                                        break;
+                                    case "Instagram":
+                                        echo '<div>
+                                <a target="_blank" href='.$current_url.' class="footer__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
                                         <rect y="0.530273" width="28" height="28" rx="4" fill="white" fill-opacity="0.2"/>
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7 14.5303C7 11.7341 7 10.3359 7.66632 9.32893C7.96386 8.87924 8.34897 8.49413 8.79865 8.19659C9.80567 7.53027 11.2038 7.53027 14 7.53027C16.7962 7.53027 18.1943 7.53027 19.2013 8.19659C19.651 8.49413 20.0361 8.87924 20.3337 9.32893C21 10.3359 21 11.7341 21 14.5303C21 17.3265 21 18.7246 20.3337 19.7316C20.0361 20.1813 19.651 20.5664 19.2013 20.864C18.1943 21.5303 16.7962 21.5303 14 21.5303C11.2038 21.5303 9.80567 21.5303 8.79865 20.864C8.34897 20.5664 7.96386 20.1813 7.66632 19.7316C7 18.7246 7 17.3265 7 14.5303ZM17.6239 14.5306C17.6239 16.5321 16.0013 18.1546 13.9999 18.1546C11.9984 18.1546 10.3759 16.5321 10.3759 14.5306C10.3759 12.5291 11.9984 10.9066 13.9999 10.9066C16.0013 10.9066 17.6239 12.5291 17.6239 14.5306ZM13.9999 16.9285C15.3242 16.9285 16.3978 15.8549 16.3978 14.5306C16.3978 13.2063 15.3242 12.1327 13.9999 12.1327C12.6756 12.1327 11.602 13.2063 11.602 14.5306C11.602 15.8549 12.6756 16.9285 13.9999 16.9285ZM17.7671 11.5759C18.2374 11.5759 18.6187 11.1947 18.6187 10.7244C18.6187 10.2541 18.2374 9.87287 17.7671 9.87287C17.2968 9.87287 16.9156 10.2541 16.9156 10.7244C16.9156 11.1947 17.2968 11.5759 17.7671 11.5759Z" fill="white"/>
                                     </svg>
                                 </a>
-                            </div>
-                            <div>
-                                <a href="" class="footer__icon">
+                            </div>';
+                                        break;
+                                    case "Youtube":
+                                        echo '<div>
+                                <a target="_blank" href='.$current_url.' class="footer__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
                                         <rect y="0.530273" width="28" height="28" rx="4" fill="white" fill-opacity="0.2"/>
                                         <path d="M14.341 19.9589L11.1815 19.8998C10.1585 19.8792 9.13301 19.9203 8.1301 19.7071C6.60444 19.3886 6.49635 17.8269 6.38326 16.517C6.22742 14.6753 6.28775 12.8002 6.58183 10.9739C6.74785 9.94921 7.40121 9.33774 8.41161 9.2712C11.8224 9.02972 15.2559 9.05834 18.6592 9.171C19.0186 9.18132 19.3805 9.23777 19.735 9.30203C21.4844 9.61541 21.5271 11.3852 21.6405 12.875C21.7536 14.3801 21.7058 15.893 21.4897 17.388C21.3162 18.6257 20.9844 19.6637 19.5841 19.7639C17.8297 19.8949 16.1154 20.0004 14.356 19.9668C14.3561 19.9589 14.346 19.9589 14.341 19.9589ZM12.4835 16.8252C13.8057 16.0494 15.1026 15.2866 16.4172 14.516C15.0926 13.7403 13.7981 12.9774 12.4835 12.2069V16.8252Z" fill="white"/>
                                     </svg>
                                 </a>
-                            </div>
-                            <div>
-                                <a href="" class="footer__icon">
+                            </div>';
+                                        break;
+                                    case "Tiktok":
+                                        echo '<div>
+                                <a target="_blank" href='.$current_url.' class="footer__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                         <path d="M11.5205 3.46337C10.9974 2.86613 10.7091 2.09914 10.7093 1.30518H8.34447V10.7951C8.32623 11.3086 8.10942 11.7951 7.73969 12.152C7.36996 12.5088 6.87617 12.7083 6.3623 12.7084C5.27555 12.7084 4.37248 11.8206 4.37248 10.7186C4.37248 9.40222 5.6429 8.41496 6.9516 8.82058V6.40218C4.31125 6.05014 2 8.10118 2 10.7186C2 13.2671 4.11227 15.0809 6.35465 15.0809C8.75774 15.0809 10.7093 13.1293 10.7093 10.7186V5.90473C11.6682 6.5934 12.8196 6.96289 14.0002 6.96086V4.59604C14.0002 4.59604 12.5614 4.66491 11.5205 3.46337Z" fill="white"/>
                                     </svg>
                                 </a>
-                            </div>
-                            <div>
-                                <a href="" class="footer__icon">
+                            </div>';
+                                        break;
+                                    case "LinkedIn":
+                                        echo '<div>
+                                <a target="_blank" href='.$current_url.' class="footer__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5.50058 5.53742H7.66708V6.61658C7.97916 5.99592 8.77949 5.43825 9.98174 5.43825C12.2865 5.43825 12.8337 6.67375 12.8337 8.94058V13.1388H10.5003V9.45683C10.5003 8.16592 10.1882 7.43792 9.39374 7.43792C8.29183 7.43792 7.83391 8.2225 7.83391 9.45625V13.1388H5.50058V5.53742ZM1.49949 13.0397H3.83283V5.43825H1.49949V13.0397ZM4.16708 2.95967C4.16716 3.15525 4.12837 3.34889 4.05297 3.52934C3.97756 3.7098 3.86704 3.87347 3.72783 4.01083C3.44573 4.2912 3.06388 4.44813 2.66616 4.44717C2.26914 4.4469 1.88817 4.29037 1.60566 4.01142C1.46695 3.87358 1.3568 3.70973 1.28153 3.52925C1.20625 3.34877 1.16733 3.15522 1.16699 2.95967C1.16699 2.56475 1.32449 2.18675 1.60624 1.90792C1.88851 1.62859 2.26963 1.47199 2.66674 1.47217C3.06458 1.47217 3.44608 1.62908 3.72783 1.90792C4.00899 2.18675 4.16708 2.56475 4.16708 2.95967Z" fill="white"/>
                                     </svg>
                                 </a>
-                            </div>
+                            </div>';
+                                        break;
+                                }
+                                ?>
+                            <?php endwhile; ?>
                         </div>
+                        <?php endif; ?>
 
                         <form class="item-48px">
                             <fieldset class="uk-fieldset">
@@ -311,7 +332,7 @@
         </div>
     </div>
     <div class="uk-section-xsmall footer__bottom uk-text-center">
-        <div class="footer__txtCopyright">© Copyright 2024 The Ocean Villas. All rights reserved.</div>
+        <div class="footer__txtCopyright"><?php the_field('copyright', 'option'); ?></div>
     </div>
 </footer>
 </div>

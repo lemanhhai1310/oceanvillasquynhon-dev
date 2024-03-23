@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <?php
+$feat_image = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID(), 'full'));
 $file = get_field('video');
 if( $file ): ?>
 <!--Video-->
@@ -8,7 +9,7 @@ if( $file ): ?>
 
     <ul class="uk-slideshow-items" uk-height-viewport="min-height: 300">
         <li>
-            <video class="lazy-video" poster="<?= get_theme_file_uri('/assets/images/banner.png') ?>" data-src="<?php echo $file['url']; ?>" autoplay loop muted playsinline uk-cover></video>
+            <video class="lazy-video" poster="<?php echo $feat_image ?>" data-src="<?php echo $file['url']; ?>" autoplay loop muted playsinline uk-cover></video>
         </li>
     </ul>
 
@@ -24,6 +25,7 @@ if( $file ): ?>
             <path d="M26.025 15C26.025 21.075 21.075 26.025 15 26.025C8.925 26.025 3.975 21.075 3.975 15C3.975 8.925 8.925 3.975 15 3.975C21.075 3.975 26.025 8.925 26.025 15ZM27 15C27 8.4 21.6 3 15 3C8.4 3 3 8.4 3 15C3 21.6 8.4 27 15 27C21.6 27 27 21.6 27 15Z" fill="white"/>
         </svg>
     </div>
+    <div class="uk-position-cover"></div>
 </div>
 <!--/Video-->
 <?php endif; ?>
@@ -33,9 +35,9 @@ if( $file ): ?>
 <!--About-->
 <div class="uk-section-large">
     <div class="uk-container">
-        <div class="uk-child-width-1-2@l uk-flex-middle" uk-grid>
+        <div class="uk-child-width-1-2@l uk-flex-middle" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
             <div>
-                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+                <div class="home__about__boxFlex anima uk-flex uk-flex-column uk-flex-middle uk-text-center">
                     <?php if (get_sub_field('title')): ?>
                     <h2 class="width-298px home__about__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>
@@ -53,7 +55,7 @@ if( $file ): ?>
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                    <div class="uk-cover-container">
+                    <div class="uk-cover-container anima">
                         <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
                         <canvas width="620" height="764"></canvas>
                     </div>
@@ -83,7 +85,7 @@ if( $file ): ?>
         'post_type' => 'room',
     ));
     if ($query->have_posts()): ?>
-    <div class="item-64px uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="center: true; autoplay: true;">
+    <div uk-scrollspy="cls: uk-animation-slide-right-medium; repeat: false; delay: 100" class="item-64px uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="center: false; autoplay: true;">
 
         <ul class="uk-slider-items uk-grid uk-grid-small uk-grid-30-l" uk-grid>
             <?php while ($query->have_posts()){ $query->the_post(); ?>
@@ -109,7 +111,18 @@ if( $file ): ?>
                     </div>
                     <div class="item-28px">
                         <h4 class="home__room__title1"><a href="" class="uk-link-toggle"><?php the_title(); ?></a></h4>
-                        <div class="item-16px home__room__txt"><?= get_the_excerpt(); ?></div>
+                        <?php if (!has_excerpt()): ?>
+                            <?php if (get_field('description')): ?>
+                            <div class="item-16px home__room__txt">
+                                <?php
+                                $desc = get_field('description');
+                                the_excerpt_limited(140 , $desc);
+                                ?>
+                            </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <div class="item-16px home__room__txt"><?= get_the_excerpt(); ?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </li>
@@ -157,12 +170,12 @@ if( $file ): ?>
             'post_type' => 'offer',
         ));
         if ($query->have_posts()): ?>
-        <div class="item-60px" uk-slider>
+        <div class="item-60px" uk-slider uk-scrollspy="cls: uk-animation-slide-right-medium; repeat: false; delay: 100">
 
             <div class="uk-position-relative">
 
                 <div class="uk-slider-container">
-                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small uk-grid-30-l" uk-grid>
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small uk-grid-30-l uk-flex-center" uk-grid>
                         <?php while ($query->have_posts()){ $query->the_post(); ?>
                         <li>
                             <div class="uk-cover-container uk-border-rounded">
@@ -185,7 +198,7 @@ if( $file ): ?>
                             </div>
                             <div class="item-16px" style="padding-bottom: 1px;">
                                 <h4 class="home__room__title1"><a href="" class="uk-link-toggle"><?php the_title(); ?></a></h4>
-                                <div class="item-12px home__room__txt"><?php the_excerpt_limited( 100 ); ?></div>
+                                <div class="item-12px home__room__txt"><?php the_excerpt_limited(100,get_the_excerpt()); ?></div>
                                 <?php if (get_sub_field('button_text')): ?>
                                 <div class="item-32px">
                                     <a
@@ -229,9 +242,9 @@ if( $file ): ?>
 
         <?php if( have_rows('dining') ): ?>
         <?php while( have_rows('dining') ): the_row(); ?>
-        <div class="uk-child-width-1-2@l uk-flex-middle item-132px" uk-grid>
+        <div class="uk-child-width-1-2@l uk-flex-middle item-132px" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
             <div>
-                <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+                <div class="home__about__boxFlex anima uk-flex uk-flex-column uk-flex-middle uk-text-center">
                     <?php if (get_sub_field('title')): ?>
                     <h2 class="width-298px home__about__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>
@@ -259,7 +272,7 @@ if( $file ): ?>
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                    <div class="uk-cover-container">
+                    <div class="uk-cover-container anima">
                         <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="">
                         <canvas width="620" height="764"></canvas>
                     </div>
@@ -282,7 +295,7 @@ $image = get_sub_field('image');
     <div class="uk-container">
         <div uk-grid>
             <div class="uk-width-auto">
-                <div class="width-500px uk-flex uk-flex-column home__experience__boxFlex">
+                <div class="width-500px uk-flex uk-flex-column home__experience__boxFlex" uk-scrollspy="cls: uk-animation-slide-left-small; repeat: false; delay: 100">
                     <?php if (get_sub_field('title')): ?>
                     <h2 class="home__experience__title"><?php the_sub_field('title'); ?></h2>
                     <?php endif; ?>
@@ -292,7 +305,19 @@ $image = get_sub_field('image');
                     <?php endif; ?>
 
                     <?php if (get_sub_field('button_text')): ?>
-                    <div><a href="" class="home__experience__btn uk-button uk-button-default"><?php the_sub_field('button_text'); ?></a></div>
+                    <div>
+                        <a
+                            href="<?php
+                            $button_link = get_sub_field('button_link');
+                            if ($button_link){
+                                $permalink = get_permalink( $button_link->ID );
+                                echo $permalink;
+                            }
+                            ?>"
+                            class="home__experience__btn uk-button uk-button-default">
+                            <?php the_sub_field('button_text'); ?>
+                        </a>
+                    </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -307,7 +332,7 @@ $image = get_sub_field('image');
 <?php while( have_rows('highlights') ): the_row(); ?>
 <div class="uk-section">
     <div class="uk-container">
-        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center" uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100">
             <?php if (get_sub_field('title')): ?>
             <h2 class="width-298px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
@@ -320,25 +345,32 @@ $image = get_sub_field('image');
 </div>
 
 <?php if( have_rows('gallery') ): ?>
-<div class="uk-grid-collapse uk-child-width-expand@l uk-light" uk-grid>
-    <?php while( have_rows('gallery') ): the_row(); ?>
-        <div>
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay: true;pause-on-hover: false;">
+
+    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-2@s uk-child-width-1-3@m">
+        <?php while( have_rows('gallery') ): the_row(); ?>
+        <li>
             <div class="uk-cover-container uk-inline-clip uk-transition-toggle">
                 <?php
                 $image = get_sub_field('image');
                 if( !empty( $image ) ): ?>
-                    <img class="lazy" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="" />
+                    <img class="lazy uk-transition-scale-up uk-transition-opaque" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" uk-cover="" />
                 <?php endif; ?>
                 <canvas width="960" height="1284"></canvas>
 
                 <?php if (get_sub_field('name')): ?>
-                <div class="home__hightlights__overlay uk-transition-fade uk-text-center uk-position-cover uk-card uk-card-body uk-flex uk-flex-middle uk-flex-center">
-                    <h3 class="home__hightlights__title"><?php the_sub_field('name'); ?></h3>
-                </div>
+                    <div class="home__hightlights__overlay uk-transition-fade uk-text-center uk-position-cover uk-card uk-card-body uk-flex uk-flex-middle uk-flex-center">
+                        <h3 class="home__hightlights__title"><?php the_sub_field('name'); ?></h3>
+                    </div>
                 <?php endif; ?>
             </div>
-        </div>
-    <?php endwhile; ?>
+        </li>
+        <?php endwhile; ?>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slider-item="next"></a>
+
 </div>
 <?php endif; ?>
 
@@ -346,27 +378,33 @@ $image = get_sub_field('image');
 <?php endwhile; ?>
 <?php endif; ?>
 
+
 <?php if( have_rows('location') ): ?>
 <?php while( have_rows('location') ): the_row(); ?>
-<div class="home__location__section uk-flex uk-flex-middle uk-background-norepeat uk-background-center-left uk-background-image@l" style="" data-src="<?= get_theme_file_uri('/assets/images/Layer1.png') ?>" uk-img>
-    <div class="uk-width uk-section">
-        <div class="uk-container">
-            <div class="uk-flex-right@l" uk-grid>
-                <div class="uk-width-1-2@l">
-                    <?php if (get_sub_field('title')): ?>
-                        <h3 class="home__location__title"><?php the_sub_field('title'); ?></h3>
-                    <?php endif; ?>
+<div class="home__location__section" style="">
+    <div class="uk-container uk-container-expand-left">
+        <div class="uk-container-item-padding-remove-left">
+            <div class="uk-flex-middle uk-grid-collapse uk-grid-133-l" uk-grid>
+                <div class="uk-width-auto@l">
+                    <img src="<?= get_theme_file_uri('/assets/images/Layer1-edit.png') ?>" alt="">
+                </div>
+                <div class="uk-width-expand">
+                    <div class="width-540px uk-margin-auto uk-card uk-card-body">
+                        <?php if (get_sub_field('title')): ?>
+                            <h3 class="home__location__title"><?php the_sub_field('title'); ?></h3>
+                        <?php endif; ?>
 
-                    <?php if( have_rows('location_repeater') ): ?>
-                        <div class="uk-child-width-1-2 item-36px" uk-grid>
-                            <?php while( have_rows('location_repeater') ): the_row(); ?>
-                                <div>
-                                    <div class="home__location__name"><?php the_sub_field('name'); ?></div>
-                                    <div class="item-4px home__location__value"><?php the_sub_field('value'); ?></div>
-                                </div>
-                            <?php endwhile; ?>
-                        </div>
-                    <?php endif; ?>
+                        <?php if( have_rows('location_repeater') ): ?>
+                            <div class="uk-child-width-1-2 item-36px" uk-grid>
+                                <?php while( have_rows('location_repeater') ): the_row(); ?>
+                                    <div>
+                                        <div class="home__location__name"><?php the_sub_field('name'); ?></div>
+                                        <div class="item-4px home__location__value"><?php the_sub_field('value'); ?></div>
+                                    </div>
+                                <?php endwhile; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

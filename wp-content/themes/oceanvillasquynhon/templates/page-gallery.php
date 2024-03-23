@@ -11,7 +11,7 @@ if( $images ): ?>
         <div class="uk-child-width-1-2 uk-child-width-1-3@l uk-grid-small uk-grid-28-l" uk-grid="masonry: pack" uk-lightbox="animation: slide" uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
             <?php foreach( $images as $image ): ?>
                 <div>
-                    <div class="anima uk-inline-clip uk-transition-toggle" tabindex="0">
+                    <div class="uk-inline-clip uk-transition-toggle anima" tabindex="0">
                         <img class="lazy uk-transition-scale-up uk-transition-opaque" data-src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                         <a href="<?php echo esc_url($image['url']); ?>" data-caption="<?php echo esc_html($image['caption']); ?>" class="uk-transition-fade uk-position-cover uk-overlay uk-overlay-primary uk-flex uk-flex-center uk-flex-middle">
                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">

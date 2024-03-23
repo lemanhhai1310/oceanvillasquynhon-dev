@@ -173,3 +173,68 @@ function dropdown_polylang_languages( $class = '' ) {
 
     return $output;
 }
+
+function oceanresort_polylang_languages( $class = '' ) {
+
+    if ( ! function_exists( 'pll_the_languages' ) ) return;
+
+    // Gets the pll_the_languages() raw code
+    $languages = pll_the_languages( array(
+        'display_names_as'       => 'name',
+        'hide_if_no_translation' => 1,
+        'raw'                    => true
+    ) );
+    //var_dump($languages);
+
+    $output = '';
+
+    // Checks if the $languages is not empty
+    if ( ! empty( $languages ) ) {
+
+        // Creates the $output variable with languages container
+        $output = '<ul class="uk-subnav header__lang uk-visible@l" uk-toggle="cls: uk-visible@l; mode: media; media: @l"><li>';
+
+        // Runs the loop through all languages
+        foreach ( $languages as $language ) {
+
+            //$id             = $language['id'];
+            $slug           = $language['slug'];
+            $name           = $language['name'];
+            //$url            = $language['url'];
+            $flag           = $language['flag'];
+            $current        = $language['current_lang'] ? ' languages__item--current' : '';
+            $no_translation = $language['no_translation'];
+
+            if ( ! $no_translation ) {
+                if ( $current ) {
+                    $output .= "<a href>$slug <span uk-drop-parent-icon></span></a>";
+                }
+            }
+
+        }
+        $output .= '<div class="uk-dropdown"><ul class="uk-nav uk-dropdown-nav">';
+        foreach ( $languages as $language ) {
+
+            //$id             = $language['id'];
+            $slug           = $language['slug'];
+            $name           = $language['name'];
+            $url            = $language['url'];
+            $flag           = $language['flag'];
+            $current        = $language['current_lang'] ? ' languages__item--current' : '';
+            $no_translation = $language['no_translation'];
+
+            if ( ! $no_translation ) {
+                if ( !$current ) {
+                    $output .= "<li><a href=\"$url\"><img src=\"$flag\" alt=\"$name\"> $slug</a></li>";
+                }
+            }
+
+        }
+
+        $output .= '</ul></div>';
+        $output .= '</li></ul>';
+
+    }
+
+    return $output;
+}

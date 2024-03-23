@@ -15,6 +15,12 @@
       background: #0C607E;
     }
   }
+  &__capacity{
+    color: #0C607E;
+    line-height: 1.5;
+    letter-spacing: .2px;
+    @include font-size(16px);
+  }
   &__linkMenu{
     color: #00ACAB !important;
     letter-spacing: 4.4px;

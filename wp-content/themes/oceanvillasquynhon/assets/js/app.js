@@ -5,7 +5,7 @@ console.log(
 
 document.addEventListener('uikit:init', () => {
     // do something
-    console.log("uikit:init")
+    console.log("uikit:init");
 })
 
 const x = document.querySelector.bind(document);

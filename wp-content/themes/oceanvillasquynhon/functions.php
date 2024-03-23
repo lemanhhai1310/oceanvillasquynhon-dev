@@ -63,8 +63,8 @@ add_filter( 'manage_edit-post_sortable_columns', 'modified_column_register_sorta
 add_filter( 'manage_edit-page_sortable_columns', 'modified_column_register_sortable' );
 add_filter( 'manage_upload_sortable_columns', 'modified_column_register_sortable' );
 
-function the_excerpt_limited( $charlength ){
-    $excerpt = get_the_excerpt();
+function the_excerpt_limited( $charlength, $excerpt ){
+    //$excerpt = get_the_excerpt();
 
     $charlength++;
 

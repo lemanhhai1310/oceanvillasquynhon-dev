@@ -11,15 +11,44 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/assets/style.css?v=<?php echo(time()) ?>">
 
     <!--JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit-icons.min.js"></script>
     <script src="<?php bloginfo('template_directory') ?>/assets/js/app.js?v=<?php echo(time()) ?>"></script>
 </head>
 <body <?php body_class(); ?>>
+<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <div class="uk-margin-auto-vertical" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: li; delay: 30; repeat: true">
+            <?php
+            wp_nav_menu(array(
+                'menu_class'     => 'uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical',
+                'theme_location' => 'headerMenuLocation',
+            ));
+            ?>
+        </div>
+        <div class="uk-text-center uk-margin">
+            <a href="" class="header__navbar__booknow uk-link-toggle">
+                <?php
+                $current_lang = pll_current_language();
+                switch ($current_lang) {
+                    case "en":
+                        echo "Book Now";
+                        break;
+                    default:
+                        echo "Đặt phòng";
+                }
+                ?>
+            </a>
+        </div>
+    </div>
+</div>
 <!--app-->
 <div id="app" class="uk-height-viewport uk-offcanvas-content uk-overflow-hidden uk-position-relative">
     <div class="uk-position-top uk-position-z-index">
-        <nav uk-sticky class="header__navbar uk-navbar-container <?= is_front_page() ? 'uk-navbar-transparent' : '' ?>">
+        <nav uk-dropnav uk-sticky class="header__navbar uk-navbar-container <?= is_front_page() ? 'uk-navbar-transparent' : '' ?>">
             <div class="uk-container uk-container-expand">
                 <div uk-navbar>
 
@@ -137,7 +166,24 @@
                         ));
                         ?>
 
-                        <?= rarus_polylang_languages(); ?>
+<!--                        --><?php //= rarus_polylang_languages(); ?>
+
+                        <?= oceanresort_polylang_languages(); ?>
+
+<!--                        <ul class="uk-subnav header__lang">-->
+<!--                            <li>-->
+<!--                                <a href>en <span uk-drop-parent-icon></span></a>-->
+<!--                                <div class="uk-dropdown">-->
+<!--                                    <ul class="uk-nav uk-dropdown-nav">-->
+<!--                                        <li><a href="#">vi</a></li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+
+                        <a class="uk-navbar-toggle uk-hidden@l header__menuBtn" href="#offcanvas-flip" uk-toggle>
+                            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                        </a>
 
                         <div class="uk-navbar-item uk-visible@l">
                             <a href="" class="header__navbar__booknow uk-link-toggle">

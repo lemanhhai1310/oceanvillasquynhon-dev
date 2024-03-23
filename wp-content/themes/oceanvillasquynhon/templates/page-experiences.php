@@ -6,9 +6,9 @@ get_header(); ?>
 <?php while( have_rows('experiences') ): the_row(); ?>
 <div class="uk-section uk-section-muted">
     <div class="uk-container">
-        <div class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
+        <div uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false; delay: 100" class="home__about__boxFlex uk-flex uk-flex-column uk-flex-middle uk-text-center">
             <?php if (get_sub_field('title')): ?>
-                <h2 class="width-388px home__about__title"><?php the_sub_field('title'); ?></h2>
+                <h2 class="width-500px home__about__title"><?php the_sub_field('title'); ?></h2>
             <?php endif; ?>
 
             <?php if (get_sub_field('desc')): ?>
@@ -56,7 +56,7 @@ get_header(); ?>
             <div uk-filter="target: .js-filter">
 
                 <div class="uk-flex uk-flex-center">
-                    <div class="offer__navFilter">
+                    <div class="offer__navFilter" uk-sticky="offset: 90">
                         <ul class="uk-subnav uk-subnav-pill uk-flex-center uk-margin-remove-bottom">
                             <li class="uk-active" uk-filter-control>
                                 <a href="#">
@@ -84,6 +84,7 @@ get_header(); ?>
                 <?php
                 $query = new WP_Query(array(
                     'post_type' => $post_type,
+                    'posts_per_page' => -1,
                     'tax_query' => array(
                         array (
                             'taxonomy' => $cat_name,
@@ -93,14 +94,14 @@ get_header(); ?>
                     ),
                 ));
                 if ($query->have_posts()): ?>
-                    <ul class="js-filter uk-child-width-1-3@l item-64px" uk-grid>
+                    <ul class="js-filter uk-child-width-1-3@l item-64px" uk-grid uk-scrollspy="target: .anima; repeat: false; cls: animate; delay: 100">
                         <?php while ($query->have_posts()){ $query->the_post(); ?>
 
                             <?php
                             $id = get_the_ID();
                             $terms = wp_get_post_terms($id, $cat_name);
                             ?>
-                            <li data-slug="<?php echo $terms[0]->slug; ?>" class="uk-inline-clip uk-transition-toggle">
+                            <li data-slug="<?php echo $terms[0]->slug; ?>" class="uk-inline-clip uk-transition-toggle anima">
                                 <div class="uk-cover-container">
                                     <?php
                                     $base_url = get_bloginfo('template_directory');

@@ -8,7 +8,8 @@ get_header(); ?>
         <div class="uk-container">
             <div class="uk-flex-right@l" uk-grid>
                 <div class="uk-width-1-2@l">
-                    <form>
+                    <?php the_content(); ?>
+                    <form hidden="">
                         <fieldset class="uk-fieldset">
 
                             <legend class="contact__form__legend uk-legend">Get in touch</legend>
