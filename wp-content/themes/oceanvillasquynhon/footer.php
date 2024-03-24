@@ -76,7 +76,7 @@ while ($query->have_posts()){ $query->the_post(); ?>
                     </div>
                 </div>
                 <div>
-                    <div class="width-360px my-class">
+                    <div class="width-360px">
                         <?php if( have_rows('social_list', 'option') ): ?>
                         <?php if( get_field('name_social') ): ?>
                             <h3 class="footer__title"><?php the_field('name_social'); ?></h3>
