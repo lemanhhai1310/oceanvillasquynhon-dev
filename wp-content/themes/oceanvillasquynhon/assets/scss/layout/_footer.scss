@@ -13,6 +13,31 @@
 
   }
   &__form{
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    .wpforms-head-container{
+      padding-bottom: 0 !important;
+      .wpforms-title{
+        @extend .footer__form__legend;
+        margin-bottom: 0 !important;
+      }
+    }
+    .wpforms-submit-container{
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    input[type="email"]{
+      max-width: 100% !important;
+    }
+    button[type="submit"]{
+      //position: absolute !important;
+      //bottom: 0px !important;
+      //right: 1px !important;
+      background-color: #00ACAB !important;
+      letter-spacing: 3px;
+      //text-transform: uppercase;
+    }
     &__legend{
       color: #00ACAB !important;
       line-height: 1.56;
@@ -32,6 +57,7 @@
       background-color: transparent;
       padding: 0;
     }
+
   }
   &__address{
     letter-spacing: 0.2px;

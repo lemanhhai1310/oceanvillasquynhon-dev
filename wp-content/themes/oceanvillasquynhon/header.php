@@ -47,7 +47,7 @@
 </div>
 <!--app-->
 <div id="app" class="uk-height-viewport uk-offcanvas-content uk-overflow-hidden uk-position-relative">
-    <div class="uk-position-top uk-position-z-index">
+    <div class="uk-position-top uk-position-z-index-high">
         <nav uk-dropnav uk-sticky class="header__navbar uk-navbar-container <?= is_front_page() ? 'uk-navbar-transparent' : '' ?>">
             <div class="uk-container uk-container-expand">
                 <div uk-navbar>

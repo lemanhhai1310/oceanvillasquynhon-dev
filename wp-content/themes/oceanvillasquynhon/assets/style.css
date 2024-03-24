@@ -997,6 +997,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   width: 453px;
 }
 
+.width-480px {
+  max-width: 100%;
+  width: 480px;
+}
+
 .width-500px {
   max-width: 100%;
   width: 500px;
@@ -1123,7 +1128,29 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding-top: 1.5rem;
   }
 }
-.footer__form__legend {
+.footer__form {
+  position: relative !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.footer__form .wpforms-head-container {
+  padding-bottom: 0 !important;
+}
+.footer__form .wpforms-head-container .wpforms-title {
+  margin-bottom: 0 !important;
+}
+.footer__form .wpforms-submit-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.footer__form input[type=email] {
+  max-width: 100% !important;
+}
+.footer__form button[type=submit] {
+  background-color: #00ACAB !important;
+  letter-spacing: 3px;
+}
+.footer__form__legend, .footer__form .wpforms-head-container .wpforms-title {
   color: #00ACAB !important;
   line-height: 1.56;
   letter-spacing: 0.2px;

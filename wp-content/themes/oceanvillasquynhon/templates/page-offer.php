@@ -18,7 +18,7 @@ get_header(); ?>
         <div uk-filter="target: .js-filter">
 
             <div class="uk-flex uk-flex-center">
-                <div class="offer__navFilter" uk-sticky="offset: 90">
+                <div class="offer__navFilter" uk-sticky="end: !.uk-section; offset: 90">
                     <ul class="uk-subnav uk-subnav-pill uk-flex-center uk-margin-remove-bottom">
                         <li class="uk-active" uk-filter-control>
                             <a href="#">
